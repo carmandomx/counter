@@ -1,25 +1,11 @@
-import { counterTypes } from '../actions'
+import { combineReducers } from 'redux'
 
-const INITIAL_STATE = {
-  counter: 0
-}
+import counterReducer from './counterReducer'
+import todoReducer from './todoReducer'
 
-const reducer = (state = INITIAL_STATE, action) => {
-  switch (action.type) {
-    case counterTypes.increment:
-      return {
-        ...state,
-        counter: state.counter + 1
-      }
-    case counterTypes.decrement:
-      return {
-        ...state,
-        counter: state.counter - 1
-      }
+const rootReducer = combineReducers({
+  counter: counterReducer,
+  todos: todoReducer
+})
 
-    default:
-      return state
-  }
-}
-
-export default reducer
+export default rootReducer
